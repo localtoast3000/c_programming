@@ -1,2 +1,3 @@
-# c_programming
+# C Programming
+
 Programs written in C language
