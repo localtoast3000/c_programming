@@ -1,4 +1,3 @@
-#include "../constants/errors.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -48,7 +47,7 @@
  * individually freed using free().
  */
 
-char **strsplit(char *input, char *delimiter, int *num_parts) {
+char **strsplit(char *input, char delimiter, int *num_parts) {
     char *input_tmp = strdup(input);
     if (!input_tmp) {
         perror("Failed to copy input");
@@ -62,7 +61,7 @@ char **strsplit(char *input, char *delimiter, int *num_parts) {
         }
     }
 
-    char **parts = malloc(sizeof(char *) * delimiter_count + 2);
+    char **parts = malloc(sizeof(char *) * (delimiter_count + 2));
     if (!parts) {
         perror("Failed to allocate memory for parts array");
         free(input_tmp);
@@ -70,7 +69,7 @@ char **strsplit(char *input, char *delimiter, int *num_parts) {
     }
 
     int idx = 0;
-    char *part = strtok(input_tmp, delimiter);
+    char *part = strtok(input_tmp, &delimiter);
 
     while (part) {
         parts[idx++] = strdup(part);
@@ -82,7 +81,7 @@ char **strsplit(char *input, char *delimiter, int *num_parts) {
             free(input_tmp);
             return NULL;
         }
-        part = strtok(NULL, delimiter);
+        part = strtok(NULL, &delimiter);
     }
     parts[idx] = NULL;
 

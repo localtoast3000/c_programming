@@ -1,6 +1,6 @@
 // utils/strings.h
-#ifndef STRINGS_H;
-#define STRINGS_H ;
+#ifndef STRINGS_H
+#define STRINGS_H
 
 #include <stdlib.h> // for size_t;
 
@@ -19,6 +19,6 @@
  * @return An array of dynamically allocated substring pointers terminated with
  * a NULL pointer, or NULL if an error occurs during execution.
  */
-char **strsplit(char *input, char *delimiter, int *num_parts);
+char **strsplit(char *input, char delimiter, int *num_parts);
 
-#endif; // STRINGS_H
+#endif // STRINGS_H
