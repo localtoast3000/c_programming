@@ -1,0 +1,6 @@
+# Set default behavior to automatically normalize line endings.
+* text=auto
+
+# Specify line ending settings for shell scripts and Markdown files.
+*.sh text eol=lf
+*.md text eol=lf

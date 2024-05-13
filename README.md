@@ -16,51 +16,47 @@ Before you begin, ensure you have installed the following software on your syste
 
 ### Building the Programs
 
-To build the programs, follow these steps:
-
-1. **Create and Navigate to the Build Directory:**
+To build the programs, you can use the provided script `cprogs` with the build command:
 
 ```bash
-mkdir build && cd build
+./cprogs build
 ```
 
-2. **Generate Build Files:**
+This script will handle the creation of the build directory, configuration of build files, and compilation of the programs.
 
-   Depending on your operating system, use one of the following commands:
+### Cleaning the Build
 
-   - **Windows:**
+To clean up the build directory, use the clean command:
 
 ```bash
-cmake .. -G "MinGW Makefiles" -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
+./cprogs clean
 ```
 
-- **macOS and Linux:**
-
-```bash
-cmake .. -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
-```
-
-These commands configure the build system to use GCC for compiling C (and C++ if needed) code. Windows users are instructed to use MinGW Makefiles to generate compatible build configurations.
-
-3. **Compile the Programs:**
-
-```bash
-cmake --build .
-```
+This command will remove the build directory, ensuring a clean state for a fresh build.
 
 ### Running the Binaries
 
-After building, the binaries will be located in the build/bin directory. You can run any of the compiled programs by navigating to this directory and executing the following command:
+To run any of the compiled binaries:
 
 ```bash
-./executable_name
+./cprogs run executable_name
 ```
 
-Replace executable_name with the name of the binary you wish to run. This name corresponds to the filename of the source file in the main directory, without its extension.
+Replace executable_name with the name of the binary you wish to run. This command will execute the specified program from the build/bin directory.
+
+### List Available Executables
+
+If you're unsure what executables are available, you can simply run the command without specifying an executable:
+
+```bash
+./cprogs run
+```
+
+This will list all the available executables in the build/bin directory.
 
 ### Usage
 
-You can run the executable files generated in the build/bin directory. Each program demonstrates different functionalities of the C language.
+The `cprogs` script enhances the ease of building, running, and maintaining the programs in this repository. Each program demonstrates different functionalities of the C language.
 
 ### Contributing
 
