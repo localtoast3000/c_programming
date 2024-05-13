@@ -3,4 +3,4 @@
 project(Constants)
 
 
-add_library(Constants STATIC src/error_messages.c)
+add_library(Constants STATIC messages/error_messages.c)

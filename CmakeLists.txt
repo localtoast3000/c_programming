@@ -24,7 +24,6 @@ foreach(source_file ${SOURCES})
     get_filename_component(executable_name ${source_file} NAME_WE)
     # Add an executable for each source file
     add_executable(${executable_name} ${source_file})
-    # Link the executable with libraries from utils and constants subdirectories
-    # Assuming the targets from those subdirectories are named 'Utils' and 'Constants'
+    # Link the executable with libraries
     target_link_libraries(${executable_name} PUBLIC Utils Constants)
 endforeach()
