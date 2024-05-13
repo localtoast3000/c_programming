@@ -2,8 +2,10 @@
 source "$(dirname "$0")/commands/styles.sh"
 
 clean() {
+    separator
     header "Cleaning the build directory..."
+    separator
     rm -rf build
-    info "Clean completed."
+    success "Clean completed."
     separator
 }

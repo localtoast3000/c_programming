@@ -3,11 +3,13 @@ source "$(dirname "$0")/commands/styles.sh"
 
 run() {
     if [ -z "$1" ]; then
-        error "Please specify the program to run. Example: ./cprogs.sh run myprogram"
+        separator
+        header "Usage: ./cprogs run myprogram"
+        separator
         if [ -d "./build/bin" ]; then
-            header "Available executables in ./build/bin:"
+            info "Available executables in ./build/bin:\n"
             ls ./build/bin | while read line; do
-                info "  $line"
+                echo -e "  $line"
             done
         else
             error "No executables found. Please build the project first."
@@ -15,7 +17,11 @@ run() {
         separator
         return 1
     fi
+    separator
     header "Running the program: $1"
+    separator
     ./build/bin/$1
+    separator
+    success "Program end"
     separator
 }
