@@ -1,0 +1,6 @@
+
+
+project(Constants)
+
+
+add_library(Constants STATIC src/error_messages.c)

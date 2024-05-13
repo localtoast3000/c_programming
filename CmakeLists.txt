@@ -1,0 +1,30 @@
+cmake_minimum_required(VERSION 3.10)
+
+project(C_Programming VERSION 1.0)
+set(CMAKE_C_STANDARD 99)
+set(CMAKE_C_STANDARD_REQUIRED True)
+
+if(NOT CMAKE_BUILD_TYPE)
+  set(CMAKE_BUILD_TYPE Release)
+endif()
+
+# Include the subdirectories that contain additional CMakeLists.txt
+add_subdirectory(utils)
+add_subdirectory(constants)
+
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+
+
+# Automatically find all .c files in the 'main' directory
+file(GLOB SOURCES "main/*.c")
+
+# Loop through each source file found
+foreach(source_file ${SOURCES})
+    # Extract the filename without the extension to use as the executable name
+    get_filename_component(executable_name ${source_file} NAME_WE)
+    # Add an executable for each source file
+    add_executable(${executable_name} ${source_file})
+    # Link the executable with libraries from utils and constants subdirectories
+    # Assuming the targets from those subdirectories are named 'Utils' and 'Constants'
+    target_link_libraries(${executable_name} PUBLIC Utils Constants)
+endforeach()
