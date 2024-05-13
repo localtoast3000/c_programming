@@ -1,0 +1,11 @@
+cmake_minimum_required(VERSION 3.10)
+
+add_library(Utils STATIC
+  strings/strsplit.c
+)
+
+target_include_directories(Utils PUBLIC
+  ${CMAKE_CURRENT_SOURCE_DIR}
+)
+
+target_link_libraries(Utils PUBLIC Constants)
