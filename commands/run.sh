@@ -4,7 +4,7 @@ source "$(dirname "$0")/commands/styles.sh"
 run() {
     if [ -z "$1" ]; then
         separator
-        header "Usage: ./cprogs run myprogram"
+        header "Usage: ./cprogs run <program_name>"
         separator
         if [ -d "./build/bin" ]; then
             info "Available executables in ./build/bin:\n"
@@ -17,11 +17,15 @@ run() {
         separator
         return 1
     fi
+
+    program_name=$1
+    shift  # Remove the first argument (program name) and keep the rest as arguments
+
     separator
-    header "Running the program: $1"
-    separator
-    ./build/bin/$1
-    separator
+    header "Running the program: $program_name"
+    header --------------------------------------------------
+   ./build/bin/"$program_name" "$@"
+    success --------------------------------------------------
     success "Program end"
     separator
 }

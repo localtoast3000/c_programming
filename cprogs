@@ -5,12 +5,29 @@ source "$(dirname "$0")/commands/build.sh"
 source "$(dirname "$0")/commands/clean.sh"
 source "$(dirname "$0")/commands/run.sh"
 
+show_usage() {
+    separator
+    echo ""
+    header "_________                                   "
+    header "\_   ___ \_____________  ____   ____  ______"
+    header "/    \  \/\____ \_  __ \/  _ \ / ___\/  ___/"
+    header "\     \___|  |_> >  | \(  <_> ) /_/  >___ \ "
+    header " \______  /   __/|__|   \____/\___  /____  >"
+    header "        \/|__|               /_____/     \/ "
+    echo ""
+    echo "Commands:"
+    echo ""
+    echo "  build                 Build the project."
+    echo "  clean                 Clean the build artifacts."
+    echo "  run <program_name>    Run the specified program."
+    echo ""
+    separator
+}
+
 # Main script execution starts here
 if [ $# -eq 0 ]; then
-    separator
-    error "Invalid command. Usage: $0 [build|clean|run <program_name>]"
-    separator
-    exit 1
+    show_usage
+    exit 0
 fi
 
 # Parse the command
@@ -23,12 +40,10 @@ case "$1" in
         ;;
     run)
         shift
-        run "$1"
+        run "$@"
         ;;
     *)
-        separator
-        error "Invalid command. Usage: $0 [build|clean|run <program_name>]"
-        separator
+        show_usage
         exit 1
         ;;
 esac
